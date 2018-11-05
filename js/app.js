@@ -6,9 +6,7 @@ const resetDisplay = () => {
   game.startGame();
 }
 
-
-
-
+// When any button is clicked 'handleInteraction' function is called
 const markButton = (event) => {
   if (event.target.tagName.toLowerCase() === "button") {
       event.target.style.backgroundColor = "pink";
@@ -18,7 +16,7 @@ const markButton = (event) => {
   }
 }
 
-
+// Event listeners
 document.querySelector("#btn__reset").addEventListener("click", resetDisplay);
 
 document.querySelector("#qwerty").addEventListener("click", markButton);
