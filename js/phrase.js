@@ -23,7 +23,7 @@ class Phrase {
   /* Function which checks to see if letter selected by player matches
    a letter in the phrase. */
     checkLetter() {
-    let matched = this.phrase.split('').filter(letter => letter.toLowerCase() === event.target.textContent);
+    let matched = this.phrase.split('').filter(letter => letter.toLowerCase() === event.target.textContent || letter.toLowerCase() === event.key);
     return matched;
     }
 
@@ -36,11 +36,25 @@ class Phrase {
       /* Looping through letters of the generated phrase to see
       whether any of them matches player's selection*/
       for (let i = 0; i < arrayOfLetters.length; i++) {
-        if (arrayOfLetters[i].textContent.toLowerCase() === event.target.textContent) {
+        if (arrayOfLetters[i].textContent.toLowerCase() === event.target.textContent || arrayOfLetters[i].textContent.toLowerCase() === event.key) {
           arrayOfLetters[i].style.backgroundColor = "MediumSpringGreen";
           arrayOfLetters[i].style.border = "2px solid black";
           arrayOfLetters[i].style.color = "black";
-          event.target.style.backgroundColor = "lime";
+          // If button is clicked on the screen
+          if (event.target.tagName.toLowerCase() === "button") {
+              event.target.style.backgroundColor = "lime";
+          }
+          // If button is pressed on a keyboard
+          for (let i = 0; i < arrayOfLetters.length; i++) {
+            if (event.key === arrayOfLetters[i].textContent.toLowerCase()) {
+              const keys = document.querySelectorAll(".key");
+              for (let i = 0; i < keys.length; i++) {
+                if (keys[i].textContent === event.key) {
+                  keys[i].style.backgroundColor = "lime";
+                }
+            }
+          }
+        }
           game.guessed += 1;
         }
       }
