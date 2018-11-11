@@ -36,29 +36,26 @@ class Game {
     /* This function adds a chosen random phrase to te screen. */
     startGame() {
       this.addedPhrase.addPhraseToDisplay();
+      console.log(this.addedPhrase);
     }
 
     /* This method ends the game by disabling all remaining buttons which weren`t pressed,
      and it also displays a message which varies depending on whether a player has won or lost. */
         gameOver() {
+          document.querySelector('#overlay').style.display = "flex";
+          document.querySelector('#overlay').removeChild(document.querySelector("button"));
           // If all letters in the phrase are guessed, players will see a message about their victory.
           if (this.missed < 5) {
-            // Message of victory
-            const messageOfVictory = document.createElement('span');
-            messageOfVictory.textContent = "Victory and glory are yours!";
-            messageOfVictory.style.fontWeight = "bold";
-            messageOfVictory.style.color = "green";
-            document.querySelector("#scoreboard").appendChild(messageOfVictory);
+            document.querySelector('#game-over-message').textContent = "Victory and glory are yours!"
+            document.querySelector('#game-over-message').style.color = "blue";
+            document.querySelector('#overlay').style.backgroundColor = "MediumSpringGreen";
           }
 
           // If players missed 5 times, they lost, and corresponding message will appear.
           if (this.missed === 5) {
-            // Message of defeat
-            const messageOfDefeat = document.createElement('span');
-            messageOfDefeat.textContent = "You have failed miserably!";
-            messageOfDefeat.style.fontWeight = "bold";
-            messageOfDefeat.style.color = "red";
-            document.querySelector("#scoreboard").appendChild(messageOfDefeat);
+            document.querySelector('#game-over-message').textContent = "You have failed miserably!"
+            document.querySelector('#game-over-message').style.color = "red";
+            document.querySelector('#overlay').style.backgroundColor = "pink";
           }
           // Disabling all buttons on the screen after the game is over
           const keys = document.querySelectorAll(".key");
@@ -69,10 +66,12 @@ class Game {
           // "New Game" Button
           const newGameButton = document.createElement('button');
           newGameButton.textContent = "New Game";
-          newGameButton.style.backgroundColor = "blue";
-          newGameButton.style.color = "yellow";
+          newGameButton.style.backgroundColor = "black";
+          newGameButton.style.color = "white";
+          newGameButton.style.width = "200px";
+          newGameButton.style.margin = "0 auto";
           newGameButton.setAttribute("id", "newGame");
-          document.querySelector("#scoreboard").appendChild(newGameButton);
+          document.querySelector("#overlay").appendChild(newGameButton);
           document.querySelector("#newGame").addEventListener("click", resetGame);
         }
 

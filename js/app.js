@@ -1,6 +1,6 @@
 let game = null;
 
-// This function hides the start screen overlay and starts rthe game
+// This function hides the start screen overlay and starts the game
 const resetDisplay = () => {
   document.querySelector("#overlay").style.display = "none";
   game = new Game();
@@ -58,18 +58,16 @@ const resetGame = () => {
     document.querySelector('#scoreboard ol').style.display = "block";
   // Removing previously generated phrase
   const phrase = document.querySelector("#phrase");
-  while(phrase.firstChild) {
-    phrase.removeChild(phrase.firstChild)
-  }
+    while(phrase.firstChild) {
+      phrase.removeChild(phrase.firstChild)
+    }
 
-  // Removing final message and "New game" button
-  const scoreboard = document.querySelector("#scoreboard");
-  const message = document.querySelector("#scoreboard span");
-  scoreboard.removeChild(message);
+  // Removing overlay
+  document.querySelector("#overlay").style.display = "none";
 
-  const button = document.querySelector("#scoreboard button");
-  scoreboard.removeChild(button);
-
+  // Creating a new game
+  game = new Game();
+  game.startGame();
 }
 
 // Event listeners
