@@ -36,7 +36,6 @@ class Game {
     /* This function adds a chosen random phrase to te screen. */
     startGame() {
       this.addedPhrase.addPhraseToDisplay();
-      console.log(this.addedPhrase);
     }
 
     /* This method ends the game by disabling all remaining buttons which weren`t pressed,
@@ -44,6 +43,7 @@ class Game {
         gameOver() {
           // If all letters in the phrase are guessed, players will see a message about their victory.
           if (this.missed < 5) {
+            // Message of victory
             const messageOfVictory = document.createElement('span');
             messageOfVictory.textContent = "Victory and glory are yours!";
             messageOfVictory.style.fontWeight = "bold";
@@ -53,16 +53,27 @@ class Game {
 
           // If players missed 5 times, they lost, and corresponding message will appear.
           if (this.missed === 5) {
+            // Message of defeat
             const messageOfDefeat = document.createElement('span');
             messageOfDefeat.textContent = "You have failed miserably!";
             messageOfDefeat.style.fontWeight = "bold";
             messageOfDefeat.style.color = "red";
             document.querySelector("#scoreboard").appendChild(messageOfDefeat);
           }
+          // Disabling all buttons on the screen after the game is over
           const keys = document.querySelectorAll(".key");
           for (let i = 0; i < keys.length; i++) {
             keys[i].disabled = true;
           }
+
+          // "New Game" Button
+          const newGameButton = document.createElement('button');
+          newGameButton.textContent = "New Game";
+          newGameButton.style.backgroundColor = "blue";
+          newGameButton.style.color = "yellow";
+          newGameButton.setAttribute("id", "newGame");
+          document.querySelector("#scoreboard").appendChild(newGameButton);
+          document.querySelector("#newGame").addEventListener("click", resetGame);
         }
 
     /* This method removes a heart from the board, and,
