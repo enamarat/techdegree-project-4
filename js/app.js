@@ -14,8 +14,6 @@ const markButton = (event) => {
       event.target.disabled = true;
       game.handleInteraction();
   }
-  let characterToDisplay = document.getElementsByClassName("letter");
-  let arrayOfLetters = Array.from(characterToDisplay);
 }
 
 // When any button on the keyboard is clicked, 'handleInteraction' function is called
