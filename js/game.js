@@ -32,11 +32,9 @@ class Game {
       return new Phrase(this.getRandomPhrase());
     }
 
-
     /* This function adds a chosen random phrase to te screen. */
     startGame() {
       this.addedPhrase.addPhraseToDisplay();
-      console.log(this.addedPhrase);
     }
 
     /* This method ends the game by disabling all remaining buttons which weren`t pressed,
@@ -63,13 +61,16 @@ class Game {
             keys[i].disabled = true;
           }
 
+          // Deactivating "keypress" event listener after the game is over
+         let characterToDisplay = document.getElementsByClassName("letter");
+         let arrayOfLetters = Array.from(characterToDisplay);
+         if (game.missed === 5 || game.guessed === arrayOfLetters.length ) {
+           document.removeEventListener("keypress", markButtonWithKeyboard);
+         }
+
           // "New Game" Button
           const newGameButton = document.createElement('button');
           newGameButton.textContent = "New Game";
-          newGameButton.style.backgroundColor = "black";
-          newGameButton.style.color = "white";
-          newGameButton.style.width = "200px";
-          newGameButton.style.margin = "0 auto";
           newGameButton.setAttribute("id", "newGame");
           document.querySelector("#overlay").appendChild(newGameButton);
           document.querySelector("#newGame").addEventListener("click", resetGame);

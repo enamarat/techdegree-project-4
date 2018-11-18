@@ -42,19 +42,17 @@ class Phrase {
           arrayOfLetters[i].style.color = "black";
           // If button is clicked on the screen
           if (event.target.tagName.toLowerCase() === "button") {
-              event.target.style.backgroundColor = "lime";
+              event.target.style.backgroundColor = "MediumSpringGreen";
           }
           // If button is pressed on a keyboard
-          for (let i = 0; i < arrayOfLetters.length; i++) {
             if (event.key === arrayOfLetters[i].textContent.toLowerCase()) {
               const keys = document.querySelectorAll(".key");
               for (let i = 0; i < keys.length; i++) {
                 if (keys[i].textContent === event.key) {
-                  keys[i].style.backgroundColor = "lime";
+                  keys[i].style.backgroundColor = "MediumSpringGreen";
                 }
             }
           }
-        }
           game.guessed += 1;
         }
       }

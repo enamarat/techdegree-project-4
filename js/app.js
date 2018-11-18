@@ -24,32 +24,33 @@ const markButtonWithKeyboard = () => {
           keys[i].style.backgroundColor = "pink";
           keys[i].disabled = true;
           game.handleInteraction();
+          keys[i].setAttribute("class", "pressed");
         }
       }
-
-      // Deactivating "keypress" event listener after the game is over
-      let characterToDisplay = document.getElementsByClassName("letter");
-      let arrayOfLetters = Array.from(characterToDisplay);
-      if (game.missed === 5 || game.guessed === arrayOfLetters.length ) {
-        document.removeEventListener("keypress", markButtonWithKeyboard);
-      }
-}
+    }
 
 // Function which resets the game
 const resetGame = () => {
   // Returning initial display screen
   document.querySelector("#overlay").style.display = "flex";
+  // Activating again buttons on a keyboard
+  const pressedButtons = document.querySelectorAll(".pressed");
+  for (let i = 0; i < pressedButtons.length; i++) {
+    pressedButtons[i].setAttribute("class", "key");
+  }
+  document.addEventListener("keypress", markButtonWithKeyboard);
+
   // Activating again all buttons on the screen and removing color marks from them
   const keys = document.querySelectorAll(".key");
   for (let i = 0; i < keys.length; i++) {
       keys[i].disabled = false;
       keys[i].style.backgroundColor = "#E5E5E5";
     }
-  // Activating again buttons on a keyboard
-  document.addEventListener("keypress", markButtonWithKeyboard);
+
   // Resetting the score
     game.guessed = 0;
     game.missed = 0;
+
   // Returning hearts to the screen
   const hearts = document.querySelectorAll(".tries");
   for (let j = 0; j < hearts.length; j++) {

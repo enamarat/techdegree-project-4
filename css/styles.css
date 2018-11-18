@@ -202,3 +202,36 @@ button {
 .lose a {
   color: var(--color-lose);
 }
+
+/* Additional styles */
+#btn__reset:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  font-weight: bold;
+}
+
+.key:hover {
+  transform: scale(1.15);
+  color: red;
+  border: 2px solid blue;
+}
+
+#newGame {
+  background-color: blue;
+  color: white;
+  width: 200px;
+  margin: 0 auto;
+}
+
+#newGame:hover {
+  background-color: gold;
+  color: black;
+  font-weight: bold;
+  border-radius: 25%;
+  border: 2px solid green;
+}
+
+#newGame:active {
+  background-color: yellow;
+}
