@@ -91,8 +91,7 @@ class Game {
         /* This method checks to see if the player has selected all of the letters
         in the phrase */
         checkForWin() {
-        let characterToDisplay = document.getElementsByClassName("letter");
-        let arrayOfLetters = Array.from(characterToDisplay);
+        let arrayOfLetters = document.getElementsByClassName("letter");
           if (this.guessed === arrayOfLetters.length) {
             document.querySelector('#scoreboard ol').style.display = "none";
             this.gameOver();
