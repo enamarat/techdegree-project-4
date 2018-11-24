@@ -61,9 +61,8 @@ class Game {
             keys[i].disabled = true;
           }
 
-          // Deactivating "keypress" event listener after the game is over
-         let characterToDisplay = document.getElementsByClassName("letter");
-         let arrayOfLetters = Array.from(characterToDisplay);
+         // Deactivating "keypress" event listener after the game is over
+         let arrayOfLetters = document.getElementsByClassName("letter");
          if (game.missed === 5 || game.guessed === arrayOfLetters.length ) {
            document.removeEventListener("keypress", markButtonWithKeyboard);
          }

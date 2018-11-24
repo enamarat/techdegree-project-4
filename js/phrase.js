@@ -31,8 +31,7 @@ class Phrase {
   /* Function which reveals the letter(s) on the board that
    matches player's selection. */
     showMatchedLetter() {
-      let characterToDisplay = document.getElementsByClassName("letter");
-      let arrayOfLetters = Array.from(characterToDisplay);
+      let arrayOfLetters = document.getElementsByClassName("letter");
       /* Looping through letters of the generated phrase to see
       whether any of them matches player's selection*/
       for (let i = 0; i < arrayOfLetters.length; i++) {
