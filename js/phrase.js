@@ -22,7 +22,7 @@ class Phrase {
 
   /* Function which checks to see if letter selected by player matches
    a letter in the phrase. */
-    checkLetter() {
+    checkLetter(event) {
     let matched = this.phrase.split('').filter(letter => letter.toLowerCase() === event.target.textContent || letter.toLowerCase() === event.key);
     return matched;
     }
@@ -30,7 +30,7 @@ class Phrase {
 
   /* Function which reveals the letter(s) on the board that
    matches player's selection. */
-    showMatchedLetter() {
+    showMatchedLetter(event) {
       let arrayOfLetters = document.getElementsByClassName("letter");
       /* Looping through letters of the generated phrase to see
       whether any of them matches player's selection*/

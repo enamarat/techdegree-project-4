@@ -90,7 +90,7 @@ class Game {
 
         /* This method checks to see if the player has selected all of the letters
         in the phrase */
-        checkForWin() {
+        checkForWin(event) {
         let arrayOfLetters = document.getElementsByClassName("letter");
           if (this.guessed === arrayOfLetters.length) {
             document.querySelector('#scoreboard ol').style.display = "none";
@@ -102,10 +102,10 @@ class Game {
       letter is present in the generated phrase. If it's not, a life is removed. If it is,
       the letter is displayed on the screen and whether a player has met all the requirements for
       victory is checked. */
-      handleInteraction() {
-        if (this.addedPhrase.checkLetter().length > 0) {
-          this.addedPhrase.showMatchedLetter();
-          this.checkForWin();
+      handleInteraction(event) {
+        if (this.addedPhrase.checkLetter(event).length > 0) {
+          this.addedPhrase.showMatchedLetter(event);
+          this.checkForWin(event);
         } else {
           this.removeLife();
         }

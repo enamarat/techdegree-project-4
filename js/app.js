@@ -12,18 +12,18 @@ const markButton = (event) => {
   if (event.target.tagName.toLowerCase() === "button") {
       event.target.style.backgroundColor = "pink";
       event.target.disabled = true;
-      game.handleInteraction();
+      game.handleInteraction(event);
   }
 }
 
 // When any button on the keyboard is clicked, 'handleInteraction' function is called
-const markButtonWithKeyboard = () => {
+const markButtonWithKeyboard = (event) => {
       const keys = document.querySelectorAll(".key");
       for (let i = 0; i < keys.length; i++) {
         if (keys[i].textContent === event.key) {
           keys[i].style.backgroundColor = "pink";
           keys[i].disabled = true;
-          game.handleInteraction();
+          game.handleInteraction(event);
           keys[i].setAttribute("class", "pressed");
         }
       }
