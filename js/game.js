@@ -40,39 +40,41 @@ class Game {
     /* This method ends the game by disabling all remaining buttons which weren`t pressed,
      and it also displays a message which varies depending on whether a player has won or lost. */
         gameOver() {
-          document.querySelector('#overlay').style.display = "flex";
-          document.querySelector('#overlay').removeChild(document.querySelector("button"));
-          // If all letters in the phrase are guessed, players will see a message about their victory.
-          if (this.missed < 5) {
-            document.querySelector('#game-over-message').textContent = "Victory and glory are yours!"
-            document.querySelector('#game-over-message').style.color = "blue";
-            document.querySelector('#overlay').style.backgroundColor = "MediumSpringGreen";
-          }
+          setTimeout( () => {
+            document.querySelector('#overlay').style.display = "flex";
+            document.querySelector('#overlay').removeChild(document.querySelector("button"));
+            // If all letters in the phrase are guessed, players will see a message about their victory.
+            if (this.missed < 5) {
+              document.querySelector('#game-over-message').textContent = "Victory and glory are yours!"
+              document.querySelector('#game-over-message').style.color = "blue";
+              document.querySelector('#overlay').style.backgroundColor = "MediumSpringGreen";
+            }
 
-          // If players missed 5 times, they lost, and corresponding message will appear.
-          if (this.missed === 5) {
-            document.querySelector('#game-over-message').textContent = "You have failed miserably!"
-            document.querySelector('#game-over-message').style.color = "red";
-            document.querySelector('#overlay').style.backgroundColor = "pink";
-          }
-          // Disabling all buttons on the screen after the game is over
-          const keys = document.querySelectorAll(".key");
-          for (let i = 0; i < keys.length; i++) {
-            keys[i].disabled = true;
-          }
+            // If players missed 5 times, they lost, and corresponding message will appear.
+            if (this.missed === 5) {
+              document.querySelector('#game-over-message').textContent = "You have failed miserably!"
+              document.querySelector('#game-over-message').style.color = "red";
+              document.querySelector('#overlay').style.backgroundColor = "pink";
+            }
+            // Disabling all buttons on the screen after the game is over
+            const keys = document.querySelectorAll(".key");
+            for (let i = 0; i < keys.length; i++) {
+              keys[i].disabled = true;
+            }
 
-         // Deactivating "keypress" event listener after the game is over
-         let arrayOfLetters = document.getElementsByClassName("letter");
-         if (game.missed === 5 || game.guessed === arrayOfLetters.length ) {
-           document.removeEventListener("keypress", markButtonWithKeyboard);
-         }
+           // Deactivating "keypress" event listener after the game is over
+           let arrayOfLetters = document.getElementsByClassName("letter");
+           if (game.missed === 5 || game.guessed === arrayOfLetters.length ) {
+             document.removeEventListener("keypress", markButtonWithKeyboard);
+           }
 
-          // "New Game" Button
-          const newGameButton = document.createElement('button');
-          newGameButton.textContent = "New Game";
-          newGameButton.setAttribute("id", "newGame");
-          document.querySelector("#overlay").appendChild(newGameButton);
-          document.querySelector("#newGame").addEventListener("click", resetGame);
+            // "New Game" Button
+            const newGameButton = document.createElement('button');
+            newGameButton.textContent = "New Game";
+            newGameButton.setAttribute("id", "newGame");
+            document.querySelector("#overlay").appendChild(newGameButton);
+            document.querySelector("#newGame").addEventListener("click", resetGame);
+          }, 1000); //timeOut
         }
 
     /* This method removes a heart from the board, and,
