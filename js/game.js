@@ -45,16 +45,17 @@ class Game {
             document.querySelector('#overlay').removeChild(document.querySelector("button"));
             // If all letters in the phrase are guessed, players will see a message about their victory.
             if (this.missed < 5) {
-              document.querySelector('#game-over-message').textContent = "Victory and glory are yours!"
-              document.querySelector('#game-over-message').style.color = "blue";
-              document.querySelector('#overlay').style.backgroundColor = "MediumSpringGreen";
+              document.querySelector('#game-over-message').textContent = "Congratulations! Victory and glory are yours!"
+              document.querySelector('#game-over-message').style.color = "yellow";
+              document.querySelector('#overlay').className = "win";
             }
 
             // If players missed 5 times, they lost, and corresponding message will appear.
             if (this.missed === 5) {
               document.querySelector('#game-over-message').textContent = "You have failed miserably!"
-              document.querySelector('#game-over-message').style.color = "red";
-              document.querySelector('#overlay').style.backgroundColor = "pink";
+              document.querySelector('#game-over-message').style.color = "yellow";
+              document.querySelector('#overlay').className = "lose";
+              document.querySelector("#revealedAnswer").textContent = `The phrase was "${this.addedPhrase.phrase}".`;
             }
             // Disabling all buttons on the screen after the game is over
             const keys = document.querySelectorAll(".key");

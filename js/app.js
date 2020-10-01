@@ -33,6 +33,8 @@ const markButtonWithKeyboard = (event) => {
 const resetGame = () => {
   // Returning initial display screen
   document.querySelector("#overlay").style.display = "flex";
+  document.querySelector("#revealedAnswer").textContent = "";
+  document.querySelector('#overlay').className = "";
   // Activating again buttons on a keyboard
   const pressedButtons = document.querySelectorAll(".pressed");
   for (let i = 0; i < pressedButtons.length; i++) {
