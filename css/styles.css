@@ -107,8 +107,6 @@ button {
   width: 15px;
 }
 
-
-
 .show {
   color: #fff;
   background-color: #4ac0d5;
@@ -124,7 +122,6 @@ button {
 
 
 /* Keyboard */
-
 .keyrow {
   display: flex;
   justify-content: center;
@@ -159,9 +156,7 @@ button {
   border-right: solid 3px rgba(0, 0, 0, 0);
 }
 
-
 /* Overlay */
-
 #overlay {
   display: flex;
   flex-direction: column;
@@ -212,9 +207,8 @@ button {
 }
 
 .key:hover {
-  transform: scale(1.15);
-  color: red;
-  border: 2px solid blue;
+  color: #FFF;
+  background-color: blue;
 }
 
 #newGame {
@@ -228,8 +222,6 @@ button {
   background-color: gold;
   color: black;
   font-weight: bold;
-  border-radius: 25%;
-  border: 2px solid green;
 }
 
 #newGame:active {
