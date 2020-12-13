@@ -10,7 +10,7 @@ const resetDisplay = () => {
 // When any button on the screen is clicked, 'handleInteraction' function is called
 const markButton = (event) => {
   if (event.target.tagName.toLowerCase() === "button") {
-      event.target.style.backgroundColor = "pink";
+      event.target.classList.add("wrong");
       event.target.disabled = true;
       game.handleInteraction(event);
   }
@@ -21,10 +21,9 @@ const markButtonWithKeyboard = (event) => {
       const keys = document.querySelectorAll(".key");
       for (let i = 0; i < keys.length; i++) {
         if (keys[i].textContent === event.key) {
-          keys[i].style.backgroundColor = "pink";
+          keys[i].classList.add("wrong");
           keys[i].disabled = true;
           game.handleInteraction(event);
-          keys[i].setAttribute("class", "pressed");
         }
       }
     }
@@ -46,7 +45,8 @@ const resetGame = () => {
   const keys = document.querySelectorAll(".key");
   for (let i = 0; i < keys.length; i++) {
       keys[i].disabled = false;
-      keys[i].style.backgroundColor = "#E5E5E5";
+      keys[i].classList.remove("wrong");
+      keys[i].classList.remove("correct");
     }
 
   // Resetting the score
@@ -75,7 +75,5 @@ const resetGame = () => {
 
 // Event listeners
 document.querySelector("#btn__reset").addEventListener("click", resetDisplay);
-
 document.querySelector("#qwerty").addEventListener("click", markButton);
-
 document.addEventListener("keypress", markButtonWithKeyboard);

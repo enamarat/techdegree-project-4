@@ -23,10 +23,9 @@ class Phrase {
   /* Function which checks to see if letter selected by player matches
    a letter in the phrase. */
     checkLetter(event) {
-    let matched = this.phrase.split('').filter(letter => letter.toLowerCase() === event.target.textContent || letter.toLowerCase() === event.key);
-    return matched;
+      let matched = this.phrase.split('').filter(letter => letter.toLowerCase() === event.target.textContent || letter.toLowerCase() === event.key);
+      return matched;
     }
-
 
   /* Function which reveals the letter(s) on the board that
    matches player's selection. */
@@ -41,14 +40,16 @@ class Phrase {
           arrayOfLetters[i].style.color = "black";
           // If button is clicked on the screen
           if (event.target.tagName.toLowerCase() === "button") {
-              event.target.style.backgroundColor = "MediumSpringGreen";
+              event.target.classList.remove("wrong");
+              event.target.classList.add("correct");
           }
           // If button is pressed on a keyboard
             if (event.key === arrayOfLetters[i].textContent.toLowerCase()) {
               const keys = document.querySelectorAll(".key");
               for (let i = 0; i < keys.length; i++) {
                 if (keys[i].textContent === event.key) {
-                  keys[i].style.backgroundColor = "MediumSpringGreen";
+                  keys[i].classList.remove("wrong");
+                  keys[i].classList.add("correct");
                 }
             }
           }

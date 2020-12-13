@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
 
 /* Variables */
-
 :root {
   --color-win: #78CF82;
   --color-lose: #D94545;
@@ -17,7 +16,6 @@
 }
 
 /* main */
-
 * {
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
@@ -84,14 +82,11 @@ button {
 }
 
 /* Title */
-
 .header {
   color: #3a3f58;
 }
 
-
 /* Phrase */
-
 .letter {
   font-size: var(--font-size-medium);
   height: 65px;
@@ -120,7 +115,6 @@ button {
   animation-duration: .5s;
 }
 
-
 /* Keyboard */
 .keyrow {
   display: flex;
@@ -135,8 +129,16 @@ button {
 }
 
 .wrong {
-  background: #f7a964;
-  color: #FFFFFF;
+  background-color: pink;
+}
+
+.correct {
+   background-color: #00fa9a;
+}
+
+.key:hover {
+  color: #FFF;
+  background-color: blue;
 }
 
 .btn__reset {
@@ -204,11 +206,6 @@ button {
   color: black;
   border: 2px solid black;
   font-weight: bold;
-}
-
-.key:hover {
-  color: #FFF;
-  background-color: blue;
 }
 
 #newGame {
